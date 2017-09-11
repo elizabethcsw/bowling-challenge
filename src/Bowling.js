@@ -70,9 +70,9 @@ Bowling.prototype.intro = function() {
 };
 
 Bowling.prototype.start = function() {
-  if(this.history.length<= 13){
-    this.status = "The player is rock and rolling."
+  if(this.history.length<= 11){
     if(this.history.length<= 9 || this.strike() || this.spare()){
+      this.status = "The player is rock and rolling."
       this.intro();
       this.firstRoll();
       if (this.first!==10){
@@ -84,14 +84,20 @@ Bowling.prototype.start = function() {
       }
       this.summary();
     } else {
-      this.status = "The game has ended."
-      console.log(this.endMessage)
-    }
-  };
+      this.end()
+    };
+  }else{
+    this.end()
+  }
 };
 
 Bowling.prototype.reset = function() {
   this.history = []
+};
+
+Bowling.prototype.end = function() {
+  this.status = "The game has ended."
+  console.log(this.status)
 };
 
 

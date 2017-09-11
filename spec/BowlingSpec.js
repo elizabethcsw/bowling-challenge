@@ -108,6 +108,12 @@ describe("Bowling", function() {
     expect(player.status).toEqual("The player is rock and rolling.");
   });
 
+  it("cannot play the 13th frame even though 12th frame is a spare", function() {
+    player.history = [[10],[10],[10],[10],[10],[10],[10],[10],[10],[10],[10],[2,8]];
+    player.start();
+    expect(player.status).toEqual("The game has ended.");
+  });
+
 
 });
 
